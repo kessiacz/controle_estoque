@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter.font import Font as tkfont
 from database.database import ControleEstoque
 from models.login import Login
+import os
 
 class ControleEstoqueApp:
     def __init__(self, root):
@@ -12,7 +13,15 @@ class ControleEstoqueApp:
         self.root.minsize(800, 400)
         self.frame_principal = tk.Frame(self.root)
         self.frame_principal.pack(expand=True, fill='both')
-        self.controle_estoque = ControleEstoque()
+
+        # Obtendo o diretório atual (onde o script está sendo executado)
+        diretorio_atual = os.getcwd()
+
+        # Determine o caminho para o arquivo do banco de dados
+        caminho_bd = os.path.join(diretorio_atual, "resources", "estoque.db")
+
+        # Inicialize a classe ControleEstoque com o caminho do banco de dados
+        self.controle_estoque = ControleEstoque(caminho_bd)
         self.login = Login(self.controle_estoque)
         self.criar_interface_login()
 

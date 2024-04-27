@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.font import Font as tkfont
-from database import ControleEstoque
-from login import Login
+from database.database import ControleEstoque
+from models.login import Login
 
 class ControleEstoqueApp:
     def __init__(self, root):
